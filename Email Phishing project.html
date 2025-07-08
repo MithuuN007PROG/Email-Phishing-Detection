@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Phishing Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --bg: #0f0f0f;
+            --text: #f4f4f4;
+            --accent: #00ffd5;
+            --secondary: #1e1e2f;
+            --highlight: #ff4c4c;
+        }
+        
+        body.light {
+            --bg: #f4f4f4;
+            --text: #0f0f0f;
+            --secondary: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(to right, #1f1c2c, #928dab);
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .project-title {
+            font-size: 3rem;
+            color: var(--accent);
+            animation: typewriter 3s steps(30) 1s 1 normal both;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--accent);
+            width: fit-content;
+            margin: 0 auto;
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background: var(--accent);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .project-description {
+            font-size: 1.2rem;
+            margin: 20px auto;
+            max-width: 700px;
+            color: #ccc;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 40px auto;
+            max-width: 600px;
+            text-align: left;
+        }
+        
+        .features-list li {
+            margin: 15px 0;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .features-list li:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .btn-animated {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            font-size: 1rem;
+            color: #0f0f0f;
+            background: var(--accent);
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-animated:hover {
+            background: #00bfa6;
+            transform: scale(1.05);
+        }
+        
+        .demo-section {
+            padding: 60px 5vw;
+            background-color: var(--secondary);
+            text-align: center;
+        }
+        
+        .demo-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .input-field,
+        textarea {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .scan-btn {
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: var(--accent);
+            color: #0f0f0f;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        .scan-btn:hover {
+            background: #00bfa6;
+        }
+        
+        #result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .risk-bar {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 400px;
+            height: 20px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .risk-level {
+            height: 100%;
+            background: #ff4c4c;
+            width: 0;
+            transition: width 0.5s ease;
+        }
+        
+        .highlight {
+            background-color: var(--highlight);
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .project-title {
+                font-size: 2rem;
+            }
+            .project-description {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <section class="hero-section">
+        <h1 class="project-title">Email Phishing Detection System</h1>
+        <p class="project-description">
+            A Java-based application that analyzes the subject and body of emails to detect phishing using rule-based and machine learning logic.
+        </p>
+        <ul class="features-list">
+            <li>🔍 Real-time email content scanning</li>
+            <li>🧠 Suspicious feature extraction (links, urgency, sender mismatch)</li>
+            <li>🛡️ Hybrid rule-based & ML detection logic</li>
+            <li>✅ Instant classification: Phishing or Legitimate</li>
+        </ul>
+        <a href="#demo" class="btn-animated">Try Demo</a>
+    </section>
+
+    <section class="demo-section" id="demo">
+        <h2>Try It Now</h2>
+        <input type="text" class="input-field" id="subject" placeholder="Enter email subject..."><br>
+        <input type="text" class="input-field" id="sender" placeholder="Enter sender email..."><br>
+        <textarea id="emailInput" placeholder="Paste your email content here..."></textarea><br>
+        <button class="scan-btn" onclick="detectPhishing()">Scan</button>
+        <div class="risk-bar">
+            <div id="riskLevel" class="risk-level"></div>
+        </div>
+        <div id="result"></div>
+    </section>
+
+    <script>
+        const suspiciousKeywords = [
+            "urgent", "verify", "click here", "update", "password", "login", "confirm", "bank", "account", "limited time", "win",
+            "congratulations", "you’ve won", "action required", "security alert", "unusual activity", "reset", "payment failed",
+            "reactivate", "suspended", "delivery failed", "free trial", "claim prize", "unauthorized access", "paypal",
+            "your atm blocked", "gift card"
+        ];
+
+        function highlightKeywords(text) {
+            suspiciousKeywords.forEach(keyword => {
+                const regex = new RegExp(`(${keyword})`, 'gi');
+                text = text.replace(regex, '<span class="highlight">$1</span>');
+            });
+            return text;
+        }
+
+        function detectPhishing() {
+            const subject = document.getElementById('subject').value.toLowerCase();
+            const sender = document.getElementById('sender').value.toLowerCase();
+            const emailText = document.getElementById('emailInput').value.toLowerCase();
+            const fullText = subject + ' ' + sender + ' ' + emailText;
+
+            let suspicionScore = 0;
+            let reasons = [];
+
+            suspiciousKeywords.forEach(word => {
+                if (fullText.includes(word)) {
+                    suspicionScore++;
+                    reasons.push(`Keyword detected: "${word}"`);
+                }
+            });
+
+            const suspiciousLinks = /http:\/\/|https:\/\//g;
+            if (suspiciousLinks.test(fullText)) {
+                suspicionScore += 2;
+                reasons.push("Suspicious link detected");
+            }
+
+            const domain = sender.split('@')[1];
+            const genericDomains = ["gmail.com", "yahoo.com", "outlook.com"];
+            if (domain && genericDomains.includes(domain)) {
+                suspicionScore++;
+                reasons.push(`Generic sender domain: ${domain}`);
+            }
+
+            let resultText = "Legitimate ✅";
+            if (suspicionScore >= 2) resultText = "Phishing ⚠️";
+
+            document.getElementById('riskLevel').style.width = `${Math.min(suspicionScore * 20, 100)}%`;
+            const highlightedEmail = highlightKeywords(emailText);
+
+            document.getElementById('result').innerHTML = `
+        <strong>Result:</strong> ${resultText}<br>
+        <strong>Suspicion Score:</strong> ${suspicionScore}<br>
+        <strong>Reasons:</strong><br>
+        <ul>${reasons.map(r => `<li>${r}</li>`).join('')}</ul>
+        <strong>Highlighted Email Content:</strong><br><div>${highlightedEmail}</div>
+      `;
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
+    </script>
+</body>
+
+</html>
